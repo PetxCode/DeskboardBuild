@@ -131,8 +131,10 @@ const Project = styled.div`
 `;
 
 const Wrapper = styled.div`
-  width: 95%;
-  height: 80%;
+  width: 90%;
+  min-height: 80%;
+  height: 100%;
+  margin-top: 100px;
   border-radius: 20px;
   background-color: white;
 `;

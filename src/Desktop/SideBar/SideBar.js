@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { AiFillHome, AiFillPieChart } from "react-icons/ai";
+import { AiFillSetting, AiFillHome, AiFillPieChart } from "react-icons/ai";
 import { BiLogIn } from "react-icons/bi";
 import { RiUserSmileFill } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -45,12 +45,12 @@ const SideBar = () => {
                   </Icon>
                   <span>Profile</span>
                 </Nav>
-                <Nav to="/">
+                {/* <Nav to="/">
                   <Icon>
                     <BsFillCartFill />
                   </Icon>
                   <span>Product</span>
-                </Nav>
+                </Nav> */}
                 <Nav to="/">
                   <Icon>
                     <AiFillPieChart />
@@ -59,9 +59,9 @@ const SideBar = () => {
                 </Nav>
                 <Nav to="/">
                   <Icon>
-                    <RiUserSmileFill />
+                    <AiFillSetting />
                   </Icon>
-                  <span>Users</span>
+                  <span>Settings</span>
                 </Nav>
               </Navigation>
             </NavHolder>
@@ -110,11 +110,11 @@ const SideBar = () => {
                         <BsFillPersonLinesFill />
                       </InnerIcon>
                     </Nav>
-                    <Nav to="/">
+                    {/* <Nav to="/">
                       <InnerIcon>
                         <BsFillCartFill />
                       </InnerIcon>
-                    </Nav>
+                    </Nav> */}
                     <Nav to="/">
                       <InnerIcon>
                         <AiFillPieChart />
@@ -122,7 +122,7 @@ const SideBar = () => {
                     </Nav>
                     <Nav to="/">
                       <InnerIcon>
-                        <RiUserSmileFill />
+                        <AiFillSetting />
                       </InnerIcon>
                     </Nav>
                   </Navigation>
@@ -156,12 +156,13 @@ const InnerMenu = styled.div`
   @media screen and (max-width: 923px) {
     display: flex;
     width: 100px;
-    position: relative;
+    position: fixed;
   }
 `;
 const Menu = styled.div`
   display: none;
   @media screen and (max-width: 923px) {
+    z-index: 10;
     display: flex;
     width: 100%;
     font-size: 30px;
@@ -181,12 +182,14 @@ const InnerContainer = styled.div`
   height: 100vh;
   background-color: lightgray;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  position: fixed;
 
   @media screen and (max-width: 923px) {
     display: flex;
     width: 100px;
     height: 100vh;
     background-color: lightgray;
+    position: fixed;
   }
 `;
 
@@ -318,11 +321,13 @@ const Container = styled.div`
   height: 100vh;
   background-color: lightgray;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  position: fixed;
 
   @media screen and (max-width: 923px) {
     display: flex;
     width: 100px;
     height: 100vh;
     background-color: lightgray;
+    position: fixed;
   }
 `;

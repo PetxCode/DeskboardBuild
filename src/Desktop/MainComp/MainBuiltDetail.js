@@ -110,14 +110,14 @@ const MainBuiltDetail = () => {
     onTaskData();
   }, [id, project]);
 
-  useEffect(() => {
-    const saveState = JSON.parse(localStorage.getItem("state"));
-    setMyButton(saveState);
-  }, []);
+  // useEffect(() => {
+  //   const saveState = JSON.parse(localStorage.getItem("state"));
+  //   setMyButton(saveState);
+  // }, []);
 
-  useEffect(() => {
-    localStorage.setItem("state", JSON.stringify(myButton));
-  }, [myButton]);
+  // useEffect(() => {
+  //   localStorage.setItem("state", JSON.stringify(myButton));
+  // }, [myButton]);
 
   return (
     <Container>
@@ -188,19 +188,24 @@ const MainBuiltDetail = () => {
             </MyTasked>
           </Card>
           <Card>
-            <Title>Veiw Task all task </Title>
-            <MainLabel>Tasked</MainLabel>
-            <Placed>
-              {stateData?.projectTask?.map((props) => (
-                <div>
-                  <div>{props.team} </div>
-                  <div></div>
-                </div>
-              ))}
-              {stateData.test}
-              {stateData.length}
-            </Placed>{" "}
-            hello
+            <Title>Veiw Task all task</Title>
+            <Holder>
+              <MainLabel>Tasked</MainLabel>
+              <Placed>
+                {stateData?.map((props) => (
+                  <div>
+                    {" "}
+                    {props?.projectTask?.map(({ team: teamMember, task }) => (
+                      <Div1>
+                        <Tasked> {task} </Tasked>
+                        <ProjectTeamMember teamMember={teamMember} />
+                        <Button1>Add To Progress</Button1>
+                      </Div1>
+                    ))}{" "}
+                  </div>
+                ))}
+              </Placed>{" "}
+            </Holder>
           </Card>
           <Card>
             <Title>Enter Task fro this Project </Title>
@@ -213,7 +218,51 @@ const MainBuiltDetail = () => {
 
 export default MainBuiltDetail;
 
+const Div1 = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+`;
+const Holder = styled.div`
+  padding-left: 10px;
+  margin-top: 30px;
+`;
+const Tasked = styled.div`
+  font-weight: bold;
+  font-size: 14px;
+  text-transform: uppercase;
+  width: 150px;
+`;
+
 const Placed = styled.div``;
+
+const Button1 = styled.button`
+  line-height: 1.4;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  outline: none;
+  border: 1px solid lightgray;
+  width: 100px;
+  height: 60px;
+  background-color: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 350ms;
+  transform: scale(1);
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+
+  :hover {
+    cursor: pointer;
+    transform: scale(0.97);
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+      rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  }
+`;
 const Button = styled.button`
   outline: none;
   border: 0;
@@ -319,6 +368,10 @@ const Card = styled.div`
   :hover {
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
       rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  }
+
+  @media screen and (max-width: 923px) {
+    width: 300px;
   }
 `;
 

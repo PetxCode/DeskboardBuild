@@ -12,17 +12,10 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     app.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
-
-      userData
-        .doc(user.uid)
-        .get()
-        .then((myData) => {
-          setCurrentUserData(myData.data());
-        });
     });
   }, []);
   return (
-    <AuthContext.Provider value={{ currentUserData, currentUser }}>
+    <AuthContext.Provider value={{ currentUser }}>
       {children}
     </AuthContext.Provider>
   );

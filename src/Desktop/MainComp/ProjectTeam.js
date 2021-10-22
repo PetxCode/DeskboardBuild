@@ -21,9 +21,9 @@ export const ProjectTeamMember = ({ teamMember }) => {
   return (
     <Container>
       <Wrapper>
-        <Image src={team.avatar} />
-        <Card>{team.name}</Card>
-        <Card1>{team.createdBy}</Card1>
+        <Image src={team?.avatar} />
+        <Card>{team?.name}</Card>
+        <Card1>{team?.createdBy}</Card1>
       </Wrapper>
     </Container>
   );

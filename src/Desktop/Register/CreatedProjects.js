@@ -77,6 +77,7 @@ export const CreatedProjects = () => {
 
     if (saveUser) {
       await app.firestore().collection("project").doc().set({
+        buttonState: true,
         projectName,
         projectDesc,
         projectDate,

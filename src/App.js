@@ -6,6 +6,8 @@ import MainBuilt from "./Desktop/MainComp/MainBuilt";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import MainBuiltDetail from "./Desktop/MainComp/MainBuiltDetail";
 import { CreatedProjects } from "./Desktop/Register/CreatedProjects";
+import PrivateRoute from "./Desktop/Register/PrivateRoute";
+import { Register } from "./Desktop/Register/Register";
 
 const App = () => {
   return (
@@ -20,6 +22,7 @@ const App = () => {
               <Route exact path="/" component={MainBuilt} />
               <Route exact path="/project/:id" component={MainBuiltDetail} />
               <Route exact path="/created" component={CreatedProjects} />
+              <Route exact path="/register" component={Register} />
             </Right>
           </Switch>
         </Wrapper>

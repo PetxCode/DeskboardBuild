@@ -145,6 +145,7 @@ export const Register = () => {
               <ImageLable htmlFor="pix">Upload your Image </ImageLable>
               <ImageInput type="file" id="pix" onChange={uploadImage} />
             </Holder>
+
             <Label>Name</Label>
             <MainInput
               placeholder="Enter your Name"
@@ -323,6 +324,7 @@ const Button = styled.div`
   border-color: ${({ bg1 }) => bg1};
   width: 80%;
   height: 60px;
+  padding: 20px 0;
   justify-content: center;
   display: flex;
   align-items: center;
@@ -330,7 +332,7 @@ const Button = styled.div`
   padding-right: 10px;
   transition: all 350ms;
   transform: scale(1);
-  border-radius: 3px;
+  border-radius: 5px;
   font-weight: bold;
 
   span {
@@ -355,6 +357,7 @@ const PassHold = styled.div`
   align-items: center;
   padding-right: 10px;
   border-radius: 3px;
+  height: 45px;
 
   :hover {
     border: 2px solid #14297c;
@@ -363,8 +366,9 @@ const PassHold = styled.div`
 
 const MainInputPass = styled.input`
   /* width: 80%; */
-  height: 30px;
+  height: 100%;
   margin: 0 auto;
+  padding: 10px 0;
   border: 0;
   outline: none;
   border-radius: 3px;
@@ -420,13 +424,15 @@ const Label = styled.label`
 
 const MainInput = styled.input`
   width: 80%;
-  height: 40px;
+  height: 50px;
+  padding: 10px 0;
   margin: 0 auto;
   border: 2px solid lightgray;
   outline: none;
   border-radius: 3px;
   font-size: 18px;
   padding-left: 10px;
+
   ::placeholder {
     font-family: Raleway;
     color: lightgray;
@@ -479,6 +485,6 @@ const Container = styled.div`
   width: 100%;
   height: 100%;
   min-height: 70vh;
-  /* padding-top: 100px; */
+  padding-top: 120px;
   /* background-color: #f8f9fc; */
 `;
