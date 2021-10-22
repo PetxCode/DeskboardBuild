@@ -2,17 +2,29 @@ import React from "react";
 import HomeScreen from "./Screen/HomeScreen";
 import styled from "styled-components";
 import SideBar from "./Desktop/SideBar/SideBar";
+import MainBuilt from "./Desktop/MainComp/MainBuilt";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import MainBuiltDetail from "./Desktop/MainComp/MainBuiltDetail";
+import { CreatedProjects } from "./Desktop/Register/CreatedProjects";
 
 const App = () => {
   return (
-    <Container>
-      <Wrapper>
-        <Left>
-          <SideBar />
-        </Left>
-        <Right>Right</Right>
-      </Wrapper>
-    </Container>
+    <Router>
+      <Container>
+        <Wrapper>
+          <Left>
+            <SideBar />
+          </Left>
+          <Switch>
+            <Right>
+              <Route exact path="/" component={MainBuilt} />
+              <Route exact path="/project/:id" component={MainBuiltDetail} />
+              <Route exact path="/created" component={CreatedProjects} />
+            </Right>
+          </Switch>
+        </Wrapper>
+      </Container>
+    </Router>
   );
 };
 
@@ -27,9 +39,10 @@ const Left = styled.div`
   }
 `;
 const Right = styled.div`
-  flex: 0.8;
+  flex: 1;
   /* background-color: green; */
   /* height: 50vh; */
+  display: flex;
 
   @media screen and (max-width: 923px) {
     display: flex;
