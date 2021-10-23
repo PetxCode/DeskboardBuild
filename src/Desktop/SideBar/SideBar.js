@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { AiFillHome, AiFillPieChart } from "react-icons/ai";
+import { AiFillSetting, AiFillHome, AiFillPieChart } from "react-icons/ai";
 import { BiLogIn } from "react-icons/bi";
 import { RiUserSmileFill } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -10,6 +10,8 @@ import {
   BsFillPersonLinesFill,
   BsFillCartFill,
 } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { app } from "./../../base";
 
 const SideBar = () => {
   const [toggleMenu, setToggleMenu] = React.useState(true);
@@ -31,46 +33,50 @@ const SideBar = () => {
 
             <NavHolder>
               <Navigation>
-                <Nav>
+                <Nav to="/">
                   <Icon>
                     <AiFillHome />
                   </Icon>
                   <span>Home</span>
                 </Nav>
-                <Nav>
+                <Nav to="/">
                   <Icon>
                     <BsFillPersonLinesFill />
                   </Icon>
                   <span>Profile</span>
                 </Nav>
-                <Nav>
+                {/* <Nav to="/">
                   <Icon>
                     <BsFillCartFill />
                   </Icon>
                   <span>Product</span>
-                </Nav>
-                <Nav>
+                </Nav> */}
+                <Nav to="/">
                   <Icon>
                     <AiFillPieChart />
                   </Icon>
                   <span>Stats</span>
                 </Nav>
-                <Nav>
+                <Nav to="/">
                   <Icon>
-                    <RiUserSmileFill />
+                    <AiFillSetting />
                   </Icon>
-                  <span>Users</span>
+                  <span>Settings</span>
                 </Nav>
               </Navigation>
             </NavHolder>
 
             <Other>
-              <Nav>
+              <Nav1
+                onClick={() => {
+                  app.auth().signOut();
+                }}
+              >
                 <Icon>
                   <BiLogIn />
                 </Icon>
                 <span>Log Out</span>
-              </Nav>
+              </Nav1>
               <Icons onClick={onToggle}>
                 <Icon>
                   <BsFillArrowLeftCircleFill />
@@ -94,40 +100,40 @@ const SideBar = () => {
 
                 <NavHolder>
                   <Navigation>
-                    <Nav>
+                    <Nav to="/">
                       <InnerIcon>
                         <AiFillHome />
                       </InnerIcon>
                     </Nav>
-                    <Nav>
+                    <Nav to="/created">
                       <InnerIcon>
                         <BsFillPersonLinesFill />
                       </InnerIcon>
                     </Nav>
-                    <Nav>
+                    {/* <Nav to="/">
                       <InnerIcon>
                         <BsFillCartFill />
                       </InnerIcon>
-                    </Nav>
-                    <Nav>
+                    </Nav> */}
+                    <Nav to="/">
                       <InnerIcon>
                         <AiFillPieChart />
                       </InnerIcon>
                     </Nav>
-                    <Nav>
+                    <Nav to="/">
                       <InnerIcon>
-                        <RiUserSmileFill />
+                        <AiFillSetting />
                       </InnerIcon>
                     </Nav>
                   </Navigation>
                 </NavHolder>
 
                 <Other>
-                  <Nav>
+                  <Nav1>
                     <InnerIcon>
                       <BiLogIn />
                     </InnerIcon>
-                  </Nav>
+                  </Nav1>
                   <Icons onClick={onToggle}>
                     <Icon>
                       <BsFillArrowRightCircleFill />
@@ -150,12 +156,13 @@ const InnerMenu = styled.div`
   @media screen and (max-width: 923px) {
     display: flex;
     width: 100px;
-    position: relative;
+    position: fixed;
   }
 `;
 const Menu = styled.div`
   display: none;
   @media screen and (max-width: 923px) {
+    z-index: 10;
     display: flex;
     width: 100%;
     font-size: 30px;
@@ -175,12 +182,14 @@ const InnerContainer = styled.div`
   height: 100vh;
   background-color: lightgray;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  position: fixed;
 
   @media screen and (max-width: 923px) {
     display: flex;
     width: 100px;
     height: 100vh;
     background-color: lightgray;
+    position: fixed;
   }
 `;
 
@@ -233,10 +242,43 @@ const Icon = styled.div`
   margin-right: 10px;
   margin-left: 10px;
 `;
-const Nav = styled.div`
+
+const Nav = styled(Link)`
+  text-decoration: none;
+  color: black;
   display: flex;
   align-items: center;
   height: 50px;
+  transition: all 350ms;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
+    rgb(209, 213, 219) 0px 0px 0px 1px inset;
+
+  span {
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  :hover {
+    cursor: pointer;
+    background-color: #002f5e;
+    color: white;
+  }
+
+  @media screen and (max-width: 923px) {
+    display: flex;
+    width: 100px;
+    justify-content: center;
+    span {
+      display: none;
+    }
+  }
+`;
+
+const Nav1 = styled.div`
+  display: flex;
+  align-items: center;
+  height: 50px;
+  font-size: 30px;
   transition: all 350ms;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px,
     rgb(209, 213, 219) 0px 0px 0px 1px inset;
@@ -279,11 +321,13 @@ const Container = styled.div`
   height: 100vh;
   background-color: lightgray;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  position: fixed;
 
   @media screen and (max-width: 923px) {
     display: flex;
     width: 100px;
     height: 100vh;
     background-color: lightgray;
+    position: fixed;
   }
 `;
